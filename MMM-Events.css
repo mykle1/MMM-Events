@@ -1,4 +1,3 @@
-/* tell the container's children to float left: */
 .MMM-Events .list-row {
     background:#f4f4f4;
     display:inline-block;
@@ -21,7 +20,6 @@
     }
 
 .MMM-Events .list-title {
-    font-size:18px;
     margin-top: 1px;   
     padding:2px;
     margin-left: 5px;
