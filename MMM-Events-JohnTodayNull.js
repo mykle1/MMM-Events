@@ -34,10 +34,9 @@ Module.register("MMM-Events", {
 
         // Set locale.
         this.url = this.getEventsUrl();
-        this.today = "";
-        this.event = {};  // =this.event = null so it starts at the beginning :)
-        this.activeItem = 0; // null so it starts at the beginning ..Everthing starts at 0
-        this.rotateInterval = null; // Nothing rotating so start
+        this.event = {};  // =this.event = starts as an empty set :)
+        this.activeItem = 0; // 0 so it starts at the beginning ..Everthing starts at 0
+        this.rotateInterval = null; // Nothing ...... so start rotating at the beginning
         this.scheduleUpdate();
     },
 
@@ -60,7 +59,7 @@ Module.register("MMM-Events", {
             wrapper.appendChild(header);
         }
 
-            var keys = Object.keys(this.event);  //it's just how parse and loop over data
+            var keys = Object.keys(this.event);  //it's just how to loop over data
             if(keys.length > 0){
                if(this.activeItem >= keys.length){
                 this.activeItem = 0;
@@ -80,7 +79,7 @@ Module.register("MMM-Events", {
             
 		   var eventsDate1 = document.createElement("div");
            eventsDate1.classList.add("small", "bright", "list-center");
-           eventsDate1.innerHTML = events.title;  //layers is like path in json data
+           eventsDate1.innerHTML = events.title;  
            //infoColumn.appendChild(eventsDate1);
            wrapper.appendChild(eventsDate1);
            
@@ -96,34 +95,32 @@ Module.register("MMM-Events", {
            
            var eventsDate2 = document.createElement("div");
            eventsDate2.classList.add("xsmall", "bright", "list-title","top-div");
-           eventsDate2.innerHTML = events.venue_name;  //layers is like path in json data
+           eventsDate2.innerHTML = events.venue_name;  
            
            wrapper.appendChild(eventsDate2);
            
            
            var eventsDate4 = document.createElement("div");
            eventsDate4.classList.add("xsmall", "bright", "list-title");
-           eventsDate4.innerHTML = events.venue_address;  //layers is like path in json data
+           eventsDate4.innerHTML = events.venue_address;  
           
            wrapper.appendChild(eventsDate4);
 
-           // This is for the date and time of show
+           var now = new Date(events.start_time);
+           var date = now.toLocaleDateString();
+           var time = now.toLocaleTimeString();
+           
            var eventsDate3 = document.createElement("div");
            eventsDate3.classList.add("xsmall", "bright", "list-title");
-           eventsDate3.innerHTML = events.start_time;  //layers is like path in json data
-          
+           eventsDate3.innerHTML = "Day: "+date+ "<br> Time: "+time;
            wrapper.appendChild(eventsDate3);
-
-          
           
         }
         return wrapper;
     },
 
     processEvents: function(data) {
-    this.today = data.Today;
     this.event = data.event;
-  console.log(this.event);  
     this.perform = data.performers;
     this.loaded = true;
     this.nick = data.name; // trying to define name
