@@ -1,0 +1,30 @@
+/* tell the container's children to float left: */
+.MMM-Events .list-row {
+    background:#f4f4f4;
+    display:inline-block;
+    }
+
+.MMM-Events .list-left {
+    width:auto;
+    padding:10px;
+    float:left;
+    }
+.MMM-Events .top-div {
+    margin-top: auto;
+    }
+.MMM-Events .list-center {
+    text-align: center;
+    }
+.MMM-Events .list-right {
+    padding:10px;
+    float:right;
+    }
+
+.MMM-Events .list-title {
+    font-size:18px;
+    margin-top: 1px;   
+    padding:2px;
+    margin-left: 5px;
+    }
+
+.MMM-Events .list-filters { padding:8px; }
