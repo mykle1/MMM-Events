@@ -18,11 +18,9 @@ Module.register("MMM-Events", {
         header: "",
         MaxWidth: "30%",
         cityCode: "elmira", // Add + between city names
-        rotateInterval: 10 * 1000, // New Event Appears
+        rotateInterval: 5 * 1000, // New Event Appears
         apikey: "",
     },
-
-
 
     getStyles: function() {
         return ["MMM-Events.css"];
@@ -67,11 +65,8 @@ Module.register("MMM-Events", {
             }
             var events = this.event[keys[this.activeItem]];   //tells you what item to show 
             
-            
             var top = document.createElement("div");
             top.classList.add("list-row");
-
-            
 
             // This is for the title of show
             var eventsDate1 = document.createElement("div");
@@ -140,17 +135,7 @@ Module.register("MMM-Events", {
         this.nick = data.name; // trying to define name
     },
 
-    getDate: function(date) {
-
-
-        var today = new Date();
-        var dd = today.getDate();
-        var mm = today.getMonth() + 1; //January is 0!
-        var yyyy = today.getFullYear();
-
-        var today = mm + '/' + dd + '/' + yyyy;
-        var month = mm;
-    },
+  
 
     scheduleCarousel: function() {
         console.log("Scheduling Events");
