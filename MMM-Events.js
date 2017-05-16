@@ -14,15 +14,13 @@ Module.register("MMM-Events", {
         initialLoadDelay: 4250,
         retryDelay: 2500,
         useHeader: false,
-		mode: "noFrame", // Frame or noFrame (around picture) perspectivecrop176by124 or dropshadow170.url
+        mode: "noFrame", // Frame or noFrame (around picture) perspectivecrop176by124 or dropshadow170.url
         header: "",
         MaxWidth: "30%",
         cityCode: "elmira", // Add + between city names
-        rotateInterval: 10 * 1000, // New Event Appears
+        rotateInterval: 5 * 1000, // New Event Appears
         apikey: "",
     },
-
-
 
     getStyles: function() {
         return ["MMM-Events.css"];
@@ -65,13 +63,10 @@ Module.register("MMM-Events", {
             if (this.activeItem >= keys.length) {
                 this.activeItem = 0;
             }
-            var events = this.event[keys[this.activeItem]];   //tells you what item to show 
-            
-            
+            var events = this.event[keys[this.activeItem]]; //tells you what item to show 
+            console.log(events);
             var top = document.createElement("div");
             top.classList.add("list-row");
-
-            
 
             // This is for the title of show
             var eventsDate1 = document.createElement("div");
@@ -82,21 +77,15 @@ Module.register("MMM-Events", {
 
             var eventsLogo = document.createElement("div");
             var eventsIcon = document.createElement("img");
-			
-			// who is the king of the if/else statement?
-		if (this.config.mode == "noFrame") {
-			eventsIcon.src = events.image.perspectivecrop176by124.url;
-		} else if (this.config.mode == "Frame") {
-			eventsIcon.src = events.image.dropshadow170.url;
-		}  
-			
-			
-			
-            eventsIcon.src = events.image.perspectivecrop176by124.url;
             eventsIcon.classList.add("list-left");
+            // who is the king of the if/else statement?
+            if (this.config.mode === "noFrame") {
+                eventsIcon.src = events.image.perspectivecrop176by124.url;
+            } else {
+                eventsIcon.src = events.image.dropshadow170.url;
+            }
             eventsLogo.appendChild(eventsIcon);
             wrapper.appendChild(eventsLogo);
-
             var rightDiv = document.createElement("div");
             rightDiv.classList.add("list-right");
 
@@ -122,11 +111,11 @@ Module.register("MMM-Events", {
 
             var eventsDate3 = document.createElement("div");
             eventsDate3.classList.add("xsmall", "bright", "list-title");
-            if (time != "12:00 AM"){
-			eventsDate3.innerHTML = "Date: " + date + "<br> Time: " + time;	
-			} else {
-			eventsDate3.innerHTML = "Date: " + date + "<br> Time: No Time Listed";	
-			}
+            if (time != "12:00 AM") {
+                eventsDate3.innerHTML = "Date: " + date + "<br> Time: " + time;
+            } else {
+                eventsDate3.innerHTML = "Date: " + date + "<br> Time: No Time Listed";
+            }
             wrapper.appendChild(eventsDate3);
 
         }
@@ -140,17 +129,7 @@ Module.register("MMM-Events", {
         this.nick = data.name; // trying to define name
     },
 
-    getDate: function(date) {
 
-
-        var today = new Date();
-        var dd = today.getDate();
-        var mm = today.getMonth() + 1; //January is 0!
-        var yyyy = today.getFullYear();
-
-        var today = mm + '/' + dd + '/' + yyyy;
-        var month = mm;
-    },
 
     scheduleCarousel: function() {
         console.log("Scheduling Events");
@@ -168,13 +147,20 @@ Module.register("MMM-Events", {
         var self = this;
     },
     getEventsUrl: function() {
-		var mode = this.config.mode;
+
         var url = null;
+        var mode = this.config.mode;
         var today = new Date();
         var eventsYear = today.getMonth() + 1;
         var cityCode = this.config.cityCode.toLowerCase();
         var apikey = this.config.apikey;
-        url = "http://api.eventful.com/json/events/search?app_key=" + apikey + "&location=" + cityCode + "&date=This+Week&keywords=concert&sort_order=popularity&sort_direction=descending&page_size=25&image_sizes=perspectivecrop176by124";
+
+
+        if (mode == "Frame") {
+            url = "http://api.eventful.com/json/events/search?app_key=" + apikey + "&location=" + cityCode + "&date=This+Week&keywords=concert&sort_order=popularity&sort_direction=descending&page_size=25&image_sizes=dropshadow170"
+        } else {
+            url = "http://api.eventful.com/json/events/search?app_key=" + apikey + "&location=" + cityCode + "&date=This+Week&keywords=concert&sort_order=popularity&sort_direction=descending&page_size=25&image_sizes=perspectivecrop176by124";
+        }
         return url;
     },
 
