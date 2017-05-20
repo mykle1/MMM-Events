@@ -1,6 +1,6 @@
 ## MMM-Events
-Events for your city: Concerts and Tour Dates, 	Performing Arts, Art Galleries & Exhibits, 
-Comedy Shows, Food and Drink, Sports, and many more.
+* Events for your city. 
+Concerts and Tour Dates, Performing Arts, Art Galleries & Exhibits, Comedy Shows, Food and Drink, Sports, and many more.
 
 
 ## Examples
