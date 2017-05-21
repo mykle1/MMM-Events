@@ -31,8 +31,8 @@ Module.register("MMM-Events", {
 
         requiresVersion: "2.1.0",
 
-            // Set locale.
-            this.url = this.getEventsUrl();
+        // Set locale.
+        this.url = this.getEventsUrl();
         this.event = {};
         this.activeItem = 0;
         this.rotateInterval = null;
