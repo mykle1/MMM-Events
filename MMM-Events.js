@@ -9,18 +9,18 @@ Module.register("MMM-Events", {
     // Module config defaults.
     defaults: {
         city: "New York",                  // Your City
-		eventType: "music",                // See Events List in ReadMe
+        eventType: "music",                // See Events List in ReadMe
         mode: "noFrame",                   // Frame or noFrame (around picture)
         apikey: "Your FREE API Key Goes Here",
-		rotateInterval: 5 * 60 * 1000,     // New Event Appears
-		useHeader: false,
+        rotateInterval: 5 * 60 * 1000,     // New Event Appears
+        useHeader: false,
         header: "",
-		MaxWidth: "197px",                 // adjust to your liking. Default is 197px
-		animationSpeed: 3000,              // Event fades in and out
+        MaxWidth: "197px",                 // adjust to your liking. Default is 197px
+        animationSpeed: 3000,              // Event fades in and out
         initialLoadDelay: 4250,
         retryDelay: 2500,
-		updateInterval: 60 * 60 * 1000,     // 60 minutes. No need to change!
-	    image: true,
+        updateInterval: 60 * 60 * 1000,    // 60 minutes. No need to change!
+        image: true,                       // true, false = no image
     },
 
     getStyles: function() {
@@ -32,8 +32,8 @@ Module.register("MMM-Events", {
 
         requiresVersion: "2.1.0",
 
-        // Set locale.
-        this.url = this.getEventsUrl();
+            // Set locale.
+            this.url = this.getEventsUrl();
         this.event = {};
         this.activeItem = 0;
         this.rotateInterval = null;
@@ -45,6 +45,7 @@ Module.register("MMM-Events", {
         var wrapper = document.createElement("div");
         wrapper.className = "wrapper";
         wrapper.style.maxWidth = this.config.maxWidth;
+
 
         if (!this.loaded) {
             wrapper.innerHTML = "Upcoming Events...";
@@ -69,37 +70,38 @@ Module.register("MMM-Events", {
             var top = document.createElement("div");
             top.classList.add("list-row");
 
-			
+
             var eventsDate1 = document.createElement("div");
             eventsDate1.classList.add("small", "bright");
             eventsDate1.innerHTML = events.title;
             wrapper.appendChild(eventsDate1);
 
-           if (this.config.image === true){
-            var eventsLogo = document.createElement("div");
-            var eventsIcon = document.createElement("img");
-            eventsIcon.classList.add("list-left", "photo"); 
 
-		
-		if (this.config.mode === "noFrame") {	    
-			if (events.image != null) {
-			eventsIcon.src = events.image.perspectivecrop176by124.url;
-			} else {
-			eventsIcon.src = "modules/MMM-Events/icons/go.jpg"; 
-					}
-			eventsLogo.appendChild(eventsIcon);
-            wrapper.appendChild(eventsLogo);	
-			} else {
-		if (events.image != null) {
-			eventsIcon.src = events.image.dropshadow170.url;
-			} else {
-			eventsIcon.src = "modules/MMM-Events/icons/go.jpg"; 
-			} 
-            eventsLogo.appendChild(eventsIcon);
-            wrapper.appendChild(eventsLogo);
-			} 
-	   }
-			
+            if (this.config.image === true) {
+                var eventsLogo = document.createElement("div");
+                var eventsIcon = document.createElement("img");
+                eventsIcon.classList.add("list-left", "photo");
+
+
+                if (this.config.mode === "noFrame") {
+                    if (events.image != null) {
+                        eventsIcon.src = events.image.perspectivecrop176by124.url;
+                    } else {
+                        eventsIcon.src = "modules/MMM-Events/icons/go.jpg";
+                    }
+                    eventsLogo.appendChild(eventsIcon);
+                    wrapper.appendChild(eventsLogo);
+                } else {
+                    if (events.image != null) {
+                        eventsIcon.src = events.image.dropshadow170.url;
+                    } else {
+                        eventsIcon.src = "modules/MMM-Events/icons/go.jpg";
+                    }
+                    eventsLogo.appendChild(eventsIcon);
+                    wrapper.appendChild(eventsLogo);
+                }
+            }
+
             var eventsDate2 = document.createElement("div");
             eventsDate2.classList.add("xsmall", "bright", "list-title");
             eventsDate2.innerHTML = events.venue_name;
@@ -165,7 +167,7 @@ Module.register("MMM-Events", {
         var eventsYear = today.getMonth() + 1;
         var city = this.config.city.toLowerCase();
         var apikey = this.config.apikey;
-		var eventType = this.config.eventType;
+        var eventType = this.config.eventType;
 
 
         if (mode == "Frame") {
