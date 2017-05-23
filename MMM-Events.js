@@ -19,7 +19,8 @@ Module.register("MMM-Events", {
 		animationSpeed: 3000,              // Event fades in and out
         initialLoadDelay: 4250,
         retryDelay: 2500,
-		updateInterval: 60 * 60 * 1000,    // 60 minutes. No need to change!
+		updateInterval: 60 * 60 * 1000,     // 60 minutes. No need to change!
+	    image: true,
     },
 
     getStyles: function() {
@@ -74,7 +75,7 @@ Module.register("MMM-Events", {
             eventsDate1.innerHTML = events.title;
             wrapper.appendChild(eventsDate1);
 
-
+           if (this.config.image === true){
             var eventsLogo = document.createElement("div");
             var eventsIcon = document.createElement("img");
             eventsIcon.classList.add("list-left", "photo"); 
@@ -97,7 +98,7 @@ Module.register("MMM-Events", {
             eventsLogo.appendChild(eventsIcon);
             wrapper.appendChild(eventsLogo);
 			} 
-			
+	   }
 			
             var eventsDate2 = document.createElement("div");
             eventsDate2.classList.add("xsmall", "bright", "list-title");
