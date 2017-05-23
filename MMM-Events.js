@@ -15,7 +15,7 @@ Module.register("MMM-Events", {
         rotateInterval: 5 * 60 * 1000,     // New Event Appears
         useHeader: false,
         header: "",
-        MaxWidth: "197px",                 // adjust to your liking. Default is 197px
+        MaxWidth: "195px",                 // adjust to your liking. Default is 195px
         animationSpeed: 3000,              // Event fades in and out
         initialLoadDelay: 4250,
         retryDelay: 2500,
