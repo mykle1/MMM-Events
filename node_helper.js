@@ -22,8 +22,6 @@ module.exports = NodeHelper.create({
         }, (error, response, body) => {
             if (!error && response.statusCode == 200) {
                 var result = JSON.parse(body).events;
-			//	console.log(result + response.statusCode);
-				console.log(response.statusCode);
                 this.sendSocketNotification('EVENTS_RESULT', result);
             }
         });
