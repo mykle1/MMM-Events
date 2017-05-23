@@ -1,25 +1,25 @@
 /* Magic Mirror
  * Module: MMM-Events
  *
- * By Mykle1 -  Brometheus #1 consultant
+ * By Mykle1 -  Brometheus #1 consultant and all around good dude!
  *
  */
 Module.register("MMM-Events", {
 
     // Module config defaults.
     defaults: {
-        city: "New York",
-        eventType: "music",
-        mode: "noFrame",
+        city: "New York",                  // Your City
+		eventType: "music",                // See Events List in ReadMe
+        mode: "noFrame",                   // Frame or noFrame (around picture)
         apikey: "Your FREE API Key Goes Here",
-        rotateInterval: 5 * 60 * 1000,
-        useHeader: false,
+		rotateInterval: 5 * 60 * 1000,     // New Event Appears
+		useHeader: false,
         header: "",
-        MaxWidth: "100%",
-        animationSpeed: 3000,
+		MaxWidth: "197px",                 // adjust to your liking. Default is 197px
+		animationSpeed: 3000,              // Event fades in and out
         initialLoadDelay: 4250,
         retryDelay: 2500,
-        updateInterval: 60 * 60 * 1000,
+		updateInterval: 60 * 60 * 1000,    // 60 minutes. No need to change!
     },
 
     getStyles: function() {
@@ -47,7 +47,7 @@ Module.register("MMM-Events", {
 
         if (!this.loaded) {
             wrapper.innerHTML = "Upcoming Events...";
-            wrapper.classList.add("dimmed", "light", "small");
+            wrapper.classList.add("bright", "light", "small");
             return wrapper;
         }
 
@@ -58,57 +58,57 @@ Module.register("MMM-Events", {
             wrapper.appendChild(header);
         }
 
-
         var keys = Object.keys(this.event);
         if (keys.length > 0) {
             if (this.activeItem >= keys.length) {
                 this.activeItem = 0;
             }
 
-
             var events = this.event[keys[this.activeItem]];
             var top = document.createElement("div");
             top.classList.add("list-row");
 
-
+			
             var eventsDate1 = document.createElement("div");
-            eventsDate1.classList.add("xsmall", "bright");
+            eventsDate1.classList.add("small", "bright");
             eventsDate1.innerHTML = events.title;
             wrapper.appendChild(eventsDate1);
 
 
             var eventsLogo = document.createElement("div");
             var eventsIcon = document.createElement("img");
-            eventsIcon.classList.add("list-left");
+            eventsIcon.classList.add("list-left", "photo"); 
 
-
-
-            if (eventsIcon.src = null || 'undefined' || response.statusCode == 404) {
-                this.activeItem = ++this.activeItem;
-            }
-
-
-            if (this.config.mode === "noFrame") {
-                eventsIcon.src = events.image.perspectivecrop176by124.url;
-            } else {
-                eventsIcon.src = events.image.dropshadow170.url;
-            }
+		
+		if (this.config.mode === "noFrame") {	    
+			if (events.image != null) {
+			eventsIcon.src = events.image.perspectivecrop176by124.url;
+			} else {
+			eventsIcon.src = "modules/MMM-Events/icons/go.jpg"; 
+					}
+			eventsLogo.appendChild(eventsIcon);
+            wrapper.appendChild(eventsLogo);	
+			} else {
+		if (events.image != null) {
+			eventsIcon.src = events.image.dropshadow170.url;
+			} else {
+			eventsIcon.src = "modules/MMM-Events/icons/go.jpg"; 
+			} 
             eventsLogo.appendChild(eventsIcon);
             wrapper.appendChild(eventsLogo);
-
-
-            var rightDiv = document.createElement("div");
-            rightDiv.classList.add("list-right");
-
-
+			} 
+			
+			
             var eventsDate2 = document.createElement("div");
-            eventsDate2.classList.add("xsmall", "bright", "list-title", "top-div");
+            eventsDate2.classList.add("xsmall", "bright", "list-title");
             eventsDate2.innerHTML = events.venue_name;
             wrapper.appendChild(eventsDate2);
 
 
             var eventsDate4 = document.createElement("div");
             eventsDate4.classList.add("xsmall", "bright", "list-title");
+
+
             eventsDate4.innerHTML = events.venue_address;
             wrapper.appendChild(eventsDate4);
 
@@ -164,11 +164,11 @@ Module.register("MMM-Events", {
         var eventsYear = today.getMonth() + 1;
         var city = this.config.city.toLowerCase();
         var apikey = this.config.apikey;
-        var eventType = this.config.eventType;
+		var eventType = this.config.eventType;
 
 
         if (mode == "Frame") {
-            url = "http://api.eventful.com/json/events/search?app_key=" + apikey + "&location=" + city + "&date=Next+30+days&category=" + eventType + "&sort_order=popularity&sort_direction=descending&page_size=50&image_sizes=dropshadow170"
+            url = "http://api.eventful.com/json/events/search?app_key=" + apikey + "&location=" + city + "&date=Next+30+days&category=" + eventType + "&sort_order=popularity&sort_direction=descending&page_size=50&image_sizes=dropshadow170";
         } else {
             url = "http://api.eventful.com/json/events/search?app_key=" + apikey + "&location=" + city + "&date=Next+30+days&category=" + eventType + "&sort_order=popularity&sort_direction=descending&page_size=50&image_sizes=perspectivecrop176by124";
         }

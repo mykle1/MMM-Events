@@ -1,7 +1,6 @@
 ## MMM-Events
-Events for your city.
-
-Concerts and Tour Dates, Performing Arts, Art Galleries & Exhibits, Comedy Shows, Food and Drink, Sports, and many more.
+Events for your city: Concerts and Tour Dates, 	Performing Arts, Art Galleries & Exhibits, 
+Comedy Shows, Food and Drink, Sports, and many more.
 
 
 ## Examples
@@ -23,15 +22,15 @@ Pictures with Frame or noFrame.
         module: 'MMM-Events',
         position: 'top_left',
         config: {
-            city: "New York",	// Your City
-			eventType: "music",		// Choose from Events List below
-			mode: "noFrame",    // "Frame" or "noFrame" (around picture)
+            city: "New York",	               // Your City
+			eventType: "music",		           // Choose from Events List below
+			mode: "noFrame",                   // "Frame" or "noFrame" (around picture)
 			apikey: "Your FREE API Key Goes Here",
-			rotateInterval: 5 * 60 * 1000,  // New Event Appears every 5 minutes
-			useHeader: false,	// Set to true if you want a header
+			rotateInterval: 5 * 60 * 1000,     // New Event Appears every 5 minutes
+			useHeader: false,	               // Set to true if you want a header
 			header: "",
-			MaxWidth: "100%",
-			animationSpeed: 3000,   // Event fades in and out
+			MaxWidth: "197px",                 // adjust to your liking. Default 197px
+			animationSpeed: 3000,              // Event fades in and out
         }
     },
 	
