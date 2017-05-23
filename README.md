@@ -30,7 +30,6 @@ Pictures with Frame or noFrame.
 		rotateInterval: 5 * 60 * 1000,     // New Event Appears every 5 minutes
 		useHeader: false,	           // Set to true if you want a header
 		header: "",
-		MaxWidth: "197px",                 // adjust to your liking. Default 197px
 		animationSpeed: 3000,              // Event fades in and out
         }
     },
