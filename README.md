@@ -22,8 +22,8 @@ Pictures with Frame or noFrame.
         module: 'MMM-Events',
         position: 'top_left',
         config: {
-            city: "New York",	               // Your City
-			eventType: "music",		           // Choose from Events List below
+            city: "New York",	                           // Your City
+			eventType: "music",		   // Choose from Events List below
 			mode: "noFrame",                   // "Frame" or "noFrame" (around picture)
 			apikey: "Your FREE API Key Goes Here",
 			rotateInterval: 5 * 60 * 1000,     // New Event Appears every 5 minutes
