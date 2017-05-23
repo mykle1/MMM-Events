@@ -20,7 +20,7 @@ Module.register("MMM-Events", {
         initialLoadDelay: 4250,
         retryDelay: 2500,
         updateInterval: 60 * 60 * 1000,    // 60 minutes. No need to change!
-        image: true,                       // true, false = no image
+        picture: true,                     // true, false = no picture
     },
 
     getStyles: function() {
@@ -77,7 +77,7 @@ Module.register("MMM-Events", {
             wrapper.appendChild(eventsDate1);
 
 
-            if (this.config.image === true) {
+            if (this.config.picture === true) {
                 var eventsLogo = document.createElement("div");
                 var eventsIcon = document.createElement("img");
                 eventsIcon.classList.add("list-left", "photo");
