@@ -30,7 +30,7 @@ Pictures with Frame or noFrame.
 		rotateInterval: 5 * 60 * 1000,     // New Event Appears every 5 minutes
 		useHeader: false,	           // Set to true if you want a header
 		header: "",
-		image: true,                 // adjust to your liking. Default 197px
+		image: true,                 // true for images, false for no images
 		animationSpeed: 3000,              // Event fades in and out
         }
     },
