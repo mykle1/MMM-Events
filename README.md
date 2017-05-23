@@ -31,7 +31,7 @@ Pictures with Frame or noFrame.
 		useHeader: false,	           // Set to true if you want a header
 		header: "",
 		animationSpeed: 3000,              // Event fades in and out
-		image: true,                       // true, false = no image
+		picture: true,                     // true, false = no image
         }
     },
 	
