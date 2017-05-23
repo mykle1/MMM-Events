@@ -6,16 +6,17 @@
 
 
 .MMM-Events .small.bright {
-  color: #33FFF3;             /* Color the title of the event */
-  text-align: left;           /* Align the title of the event. left, center, right */
+    color: #FFFFFF;             /* Color the title of the event. Default is white. */
+	text-align: left;           /* Align the title of the event. left, center, right */
 }
 
 .MMM-Events .xsmall.bright {
-  color: #33FFF3;             /* Color the information for the event */
-  text-align: left;           /* Align the information for the event. left, center, right */
+    color: #FFFFFF;             /* Color the information for the event. Default is white. */
+	text-align: left;           /* Align the information for the event. left, center, right */
 }
 
 .MMM-Events .list-left {
-  padding: 0px;               /* Nudge picture */
-  float: left;                /* Align the picture for the event. left or right */
+    width:auto;
+    padding: 0px;               /* Nudge picture */
+    float: left;                /* Align the picture for the event. left or right */
 }
