@@ -9,19 +9,19 @@ Module.register("MMM-Events", {
     // Module config defaults.
     defaults: {
         city: "New York",              // Your City
-		eventType: "music",            // See Events List in ReadMe
-		when: "Next week",             // "All", "Future", "Past", "Today", "Last Week", "This Week", "Next week", and months by name, e.g. "October"
+	eventType: "music",            // See Events List in ReadMe
+	when: "Next week",             // "All", "Future", "Past", "Today", "Last Week", "This Week", "Next week", and months by name, e.g. "October"
         mode: "noFrame",               // Frame or noFrame (around picture)
         apikey: "Your FREE API Key Goes Here",
-		rotateInterval: 5 * 60 * 1000, // New Event Appears
-		useHeader: false,
+	rotateInterval: 5 * 60 * 1000, // New Event Appears
+	useHeader: false,
         header: "",
-		maxWidth: "195px",             // adjust to your liking 
-		animationSpeed: 3000,          // Event fades in and out
+	maxWidth: "195px",             // adjust to your liking 
+	animationSpeed: 3000,          // Event fades in and out
         initialLoadDelay: 4250,
         retryDelay: 2500,
-		updateInterval: 60 * 60 * 1000, // 60 minutes. No need to change!
-		picture: true,                  // true, false = no picture
+	updateInterval: 60 * 60 * 1000, // 60 minutes. No need to change!
+	picture: true,                  // true, false = no picture
     },
 
     getStyles: function() {
