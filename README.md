@@ -13,7 +13,6 @@ Pictures with Frame or noFrame.
 ## Installation
 
 * `git clone https://github.com/mykle1/MMM-Events` into the `~/MagicMirror/modules` directory.
-* `cd ~MagicMirror/modules/MMM-Events`
 * Get FREE API key --> http://eventful.com/join?goto=http%3A%2F%2Fapi.eventful.com%2Fkeys#/
 * Annotated .css file included for your convenience.
 
