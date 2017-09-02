@@ -1,5 +1,5 @@
 ## MMM-Events
-Rotation of upcoming events for your city.
+Rotation of upcoming events for your city. Never miss a show because you didn't know about it!
 
 Concerts and Tour Dates, Performing Arts, Art Galleries & Exhibits, Comedy Shows, Food and Drink, Sports, and many more.
 
