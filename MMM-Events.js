@@ -140,6 +140,20 @@ Module.register("MMM-Events", {
         }
         return wrapper;
     },
+	
+/////  Add this function to the modules you want to control with voice //////
+
+    notificationReceived: function(notification, payload) {
+        if (notification === 'HIDE_EVENTS') {
+            this.hide(1000);
+        //    this.updateDom(300);
+        }  else if (notification === 'SHOW_EVENTS') {
+            this.show(1000);
+        //   this.updateDom(300);
+        }
+            
+    },
+	
 
     processEvents: function(data) {
         this.event = data.event;
