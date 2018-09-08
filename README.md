@@ -37,6 +37,8 @@ Pictures with Frame or noFrame.
 	
 ## Choose your config.js "eventType" from this list
 
+* For multiple events, seperate types below by commas (Ex. "music_electronic,music_jazz,music_vocal,music_rap_hiphop") 
+
 ## Concerts & Tour Dates
 
 * music
