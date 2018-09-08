@@ -23,7 +23,7 @@ Pictures with Frame or noFrame.
         position: 'top_left',
         config: {
 		city: "New York",	           // Your City
-		eventType: "music",		   // Choose from Events List below
+		eventType: "sports,music_country", // One or more, seperated by commas. Choose from Events List below
 		when: "This Week",                 // "All", "Future", "Past", "Today", "Last Week", "This Week", "Next week", and months by name, e.g. "October"
 		mode: "noFrame",                   // "Frame" or "noFrame" (around picture)
 		apikey: "Your FREE API Key Goes Here",
