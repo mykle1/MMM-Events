@@ -56,7 +56,8 @@ Module.register("MMM-Events", {
         if (this.config.useHeader != false) {
             var header = document.createElement("header");
             header.classList.add("xsmall", "bright");
-            header.innerHTML = "Events for " + this.config.city;
+            if (this.config.header) header.innerHTML = this.config.header;
+            else header.innerHTML = "Events for " + this.config.city;
             wrapper.appendChild(header);
         }
 
