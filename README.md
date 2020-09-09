@@ -18,26 +18,28 @@ Pictures with Frame or noFrame.
 
 ## Config.js entry and options
 
-    {
+      {
+        disabled: f,
         module: 'MMM-Events',
-        position: 'top_left',
+        position: 'top_right',
         config: {
-		city: "New York",	           // Your City
-		eventType: "sports,music_country", // One or more, seperated by commas. Choose from Events List below
-		when: "This Week",                 // "All", "Future", "Past", "Today", "Last Week", "This Week", "Next week", and months by name, e.g. "October"
-		mode: "noFrame",                   // "Frame" or "noFrame" (around picture)
-		apikey: "Your FREE API Key Goes Here",
-		rotateInterval: 5 * 60 * 1000,     // New Event Appears every 5 minutes
-		useHeader: false,	           // Set to true if you want a header
-		header: "",
-		animationSpeed: 3000,              // Event fades in and out
-		picture: true,                     // true, false = no image
+            city: "49.1829,0.3707", // "new york", or lat,long ex "40.123456,-74.123456",
+            radius: "100", // search radius
+            radiusDistance: "km", // mi or km
+            eventType: "music,movies_film,art,sports", // Choose from Events List below
+            when: "This Week",  // "All", "Future", "Past", "Today", "Last Week", "This Week", "Next week", and months
+            mode: "noFrame",   // "Frame" or "noFrame" (around picture)
+            apikey: "YOUR API KEY",
+            rotateInterval: 5 * 60 * 1000,     // New Event Appears every 5 minutes
+            useHeader: true,	           // Set to true if you want a header
+            header: "Spectacle a proximité",
+            animationSpeed: 3000,              // Event fades in and out
+            picture: true,                     // true, false = no image
         }
-    },
-	
+      },
 
 ## For multiples of eventType
-Seperate eventTypes (below) by commas (Ex. "music_electronic,music_jazz,music_vocal,music_rap_hiphop") 
+Seperate eventTypes (below) by commas (Ex. "music_electronic,music_jazz,music_vocal,music_rap_hiphop")
 
 
 # Choose your config.js "eventType" from this list
@@ -70,7 +72,7 @@ Seperate eventTypes (below) by commas (Ex. "music_electronic,music_jazz,music_vo
 
 ## Performing Arts
 
-* performing_arts	
+* performing_arts
 * performing_arts_cabaret
 * performing_arts_opera
 * performing_arts_dance
@@ -79,7 +81,7 @@ Seperate eventTypes (below) by commas (Ex. "music_electronic,music_jazz,music_vo
 * performing_arts_comedy
 * performing_arts_theatre
 
-## 	Sports	
+## 	Sports
 
 * sports				
 * sports_autoracing
@@ -119,10 +121,10 @@ Seperate eventTypes (below) by commas (Ex. "music_electronic,music_jazz,music_vo
 
 ## Kids & Family
 
-* family_fun_kids 
+* family_fun_kids
 
 ## Festivals		
-	
+
 * festivals_parades		
 * festivals_parades_circus
 * festivals_parades_festival
@@ -166,9 +168,9 @@ Seperate eventTypes (below) by commas (Ex. "music_electronic,music_jazz,music_vo
 * support_support
 * support_yoga
 
-## Holiday	
+## Holiday
 
-* holiday	
+* holiday
 
 ## Literary & Books			
 
@@ -177,7 +179,7 @@ Seperate eventTypes (below) by commas (Ex. "music_electronic,music_jazz,music_vo
 
 ## Museums & Attractions
 
-* attractions	
+* attractions
 
 ## Neighborhood		
 
@@ -204,13 +206,13 @@ Seperate eventTypes (below) by commas (Ex. "music_electronic,music_jazz,music_vo
 
 * schools_alumni
 
-## 	Organizations & Meetups	
+## 	Organizations & Meetups
 
 * clubs_associations
 
-## Outdoors & Recreation	
+## Outdoors & Recreation
 
-* outdoors_recreation	
+* outdoors_recreation
 * outdoors_recreation_cycling
 * outdoors_recreation_hiking
 * outdoors_recreation_nature

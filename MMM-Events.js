@@ -8,20 +8,22 @@ Module.register("MMM-Events", {
 
     // Module config defaults.
     defaults: {
-        city: "New York",              // Your City
-	eventType: "music",            // See Events List in ReadMe
-	when: "Next week",             // "All", "Future", "Past", "Today", "Last Week", "This Week", "Next week", and months by name, e.g. "October"
-        mode: "noFrame",               // Frame or noFrame (around picture)
-        apikey: "Your FREE API Key Goes Here",
-	rotateInterval: 5 * 60 * 1000, // New Event Appears
-	useHeader: false,
-        header: "",
-	maxWidth: "195px",             // adjust to your liking 
-	animationSpeed: 3000,          // Event fades in and out
-        initialLoadDelay: 4250,
-        retryDelay: 2500,
-	updateInterval: 60 * 60 * 1000, // 60 minutes. No need to change!
-	picture: true,                  // true, false = no picture
+city: "", // Your City or lat,long ex "40.123456,-74.123456",
+radius: "", // search radius
+radiusDistance: "", // mi or km
+eventType: "", // See Events List in ReadMe
+when: "", // "All", "Future", "Past", "Today", "Last Week", "This Week", "Next week", and months by name
+mode: "", // Frame or noFrame (around picture)
+apikey: "Your FREE API Key Goes Here",
+rotateInterval: 5 * 60 * 1000, // New Event Appears
+useHeader: false,
+header: "",
+maxWidth: "195px",             // adjust to your liking
+animationSpeed: 3000,          // Event fades in and out
+initialLoadDelay: 3750,
+retryDelay: 2500,
+updateInterval: 60 * 60 * 1000, // 60 minutes. No need to change!
+picture: true,                  // true, false = no picture
     },
 
     getStyles: function() {
@@ -61,66 +63,66 @@ Module.register("MMM-Events", {
             wrapper.appendChild(header);
         }
 
-        
+
         var keys = Object.keys(this.event);
         if (keys.length > 0) {
             if (this.activeItem >= keys.length) {
                 this.activeItem = 0;
             }
 
-           
+
             var events = this.event[keys[this.activeItem]];
             var top = document.createElement("div");
             top.classList.add("list-row");
 
-            
+
             var eventsDate1 = document.createElement("div");
             eventsDate1.classList.add("small", "bright");
             eventsDate1.innerHTML = events.title;
             wrapper.appendChild(eventsDate1);
 
-            
-		if (this.config.picture === true) {	
+
+		if (this.config.picture === true) {
 				var eventsLogo = document.createElement("div");
 				var eventsIcon = document.createElement("img");
-				eventsIcon.classList.add("list-left", "photo"); 
+				eventsIcon.classList.add("list-left", "photo");
 
-			
-		if (this.config.mode === "noFrame") {	    
+
+		if (this.config.mode === "noFrame") {
 			if (events.image != null) {
 			eventsIcon.src = events.image.perspectivecrop176by124.url;
 		} else {
-			eventsIcon.src = "modules/MMM-Events/icons/go.jpg"; 
+			eventsIcon.src = "modules/MMM-Events/icons/go.jpg";
 		}
 			eventsLogo.appendChild(eventsIcon);
-					wrapper.appendChild(eventsLogo);	
+					wrapper.appendChild(eventsLogo);
 		} else {
 			if (events.image != null) {
 			eventsIcon.src = events.image.dropshadow170.url;
 		} else {
-			eventsIcon.src = "modules/MMM-Events/icons/go.jpg"; 
-		} 
+			eventsIcon.src = "modules/MMM-Events/icons/go.jpg";
+		}
 					eventsLogo.appendChild(eventsIcon);
 			wrapper.appendChild(eventsLogo);
-		} 
-				
-		}	
-           
+		}
+
+		}
+
 
             var eventsDate2 = document.createElement("div");
             eventsDate2.classList.add("xsmall", "bright", "list-title");
             eventsDate2.innerHTML = events.venue_name;
             wrapper.appendChild(eventsDate2);
 
-           
+
             var eventsDate4 = document.createElement("div");
             eventsDate4.classList.add("xsmall", "bright", "list-title");
 
-           
+
             eventsDate4.innerHTML = events.venue_address;
             wrapper.appendChild(eventsDate4);
 
-            
+
             var now = new Date(events.start_time);
             var date = now.toLocaleDateString();
             var time = now.toLocaleTimeString(navigator.language, {
@@ -128,7 +130,7 @@ Module.register("MMM-Events", {
                 minute: '2-digit'
             });
 
-            
+
             var eventsDate3 = document.createElement("div");
             eventsDate3.classList.add("xsmall", "bright", "list-title");
             if (time != "12:00 AM") {
@@ -141,7 +143,7 @@ Module.register("MMM-Events", {
         }
         return wrapper;
     },
-	
+
 /////  Add this function to the modules you want to control with voice //////
 
     notificationReceived: function(notification, payload) {
@@ -152,9 +154,9 @@ Module.register("MMM-Events", {
             this.show(1000);
         //   this.updateDom(300);
         }
-            
+
     },
-	
+
 
     processEvents: function(data) {
         this.event = data.event;
@@ -183,17 +185,18 @@ Module.register("MMM-Events", {
         var url = null;
         var mode = this.config.mode;
         var today = new Date();
-        var eventsYear = today.getMonth() + 1;
+        var eventsYear = today.getMonth() + 1;20
         var city = this.config.city.toLowerCase();
         var apikey = this.config.apikey;
 		var eventType = this.config.eventType;
 		var when = this.config.when;
+    var radius = this.config.radius;
+    var radiusDistance = this.config.radiusDistance;
 
-       
         if (mode == "Frame") {
-            url = "http://api.eventful.com/json/events/search?app_key=" + apikey + "&location=" + city + "&date=" + when + "&category=" + eventType + "&sort_order=popularity&sort_direction=descending&page_size=50&image_sizes=dropshadow170";
+            url = "http://api.eventful.com/json/events/search?app_key=" + apikey + "&location=" + city + "&date=" + when + "&category=" + eventType + "&within=" + radius + "&units=" + radiusDistance + "&sort_order=popularity&sort_direction=descending&page_size=50&image_sizes=dropshadow170";
         } else {
-            url = "http://api.eventful.com/json/events/search?app_key=" + apikey + "&location=" + city + "&date=" + when + "&category=" + eventType + "&sort_order=popularity&sort_direction=descending&page_size=50&image_sizes=perspectivecrop176by124";
+            url = "http://api.eventful.com/json/events/search?app_key=" + apikey + "&location=" + city + "&date=" + when + "&category=" + eventType + "&within=" + radius + "&units=" + radiusDistance + "&sort_order=popularity&sort_direction=descending&page_size=50&image_sizes=perspectivecrop176by124";
         }
         return url;
     },
