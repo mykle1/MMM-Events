@@ -1,3 +1,5 @@
+API is deprecated. Module is not functioning, until further notice.
+
 ## MMM-Events
 * Rotation of upcoming events for your city.
 * Never miss a show because you didn't know about it!
